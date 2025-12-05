@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Absolute Healing | Workshops & Training</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style/style.css">
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body id="top">
+
+<!-- ================= HEADER ================= -->
+<header>
+  <nav class="navbar navbar-expand-md bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-uppercase" href="index.html" style="color:#3b5249;">Absolute Healing</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navmenu">
+        <ul class="navbar-nav gap-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="therapies.html">Therapies</a></li>
+          <li class="nav-item"><a class="nav-link active" href="workshops.html">Workshops</a></li>
+          <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ================= INTRO ================= -->
+<section class="intro text-center">
+  <div class="container">
+    <h2>Holistic Training & Workshops</h2>
+    <p>
+      Carol shares her 25+ years of experience teaching healing arts that empower others. 
+      From Reiki to Crystal Healing, these workshops support both personal and professional growth.
+    </p>
+  </div>
+</section>
+
+<!-- ================= WORKSHOP GRID ================= -->
+<section class="therapy-grid container text-center my-5">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card p-3 shadow-sm h-100">
+        <img src="images/reiki.jpg" alt="Reiki Training" class="img-fluid rounded mb-3">
+        <h3>Reiki Training (All Levels)</h3>
+        <p>Learn the Japanese art of energy healing for self and others.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card p-3 shadow-sm h-100">
+        <img src="images/crystals.jpg" alt="Crystal Healing Workshop" class="img-fluid rounded mb-3">
+        <h3>Crystal Healing</h3>
+        <p>Use crystals to balance energy and promote emotional harmony.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card p-3 shadow-sm h-100">
+        <img src="images/bush.png" alt="Flower Remedies" class="img-fluid rounded mb-3">
+        <h3>Australian Bush Flower Remedies</h3>
+        <p>Explore vibrational medicine and create custom blends for balance.</p>
+      </div>
+    </div>
+  </div>
+  <a href="#workshopForm" class="btn mt-4">Register Your Interest</a>
+</section>
+
+<!-- ================= WORKSHOP FORM ================= -->
+<section id="workshopForm" class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="workshop-form p-4 bg-white rounded shadow-sm">
+        <h2 class="text-center mb-3">Join a Workshop</h2>
+        <form id="workshopForm">
+          <div class="mb-3">
+            <label for="name" class="form-label fw-semibold">Name</label>
+            <input type="text" id="name" class="form-control" placeholder="Your full name" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label fw-semibold">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="example@email.com" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="message" class="form-label fw-semibold">Which workshop are you interested in?</label>
+            <textarea id="message" class="form-control" rows="4" required></textarea>
+          </div>
+
+          <button type="submit" class="btn w-100">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <p>© 2025 Absolute Healing — Empowering through Education & Healing</p>
+  <a href="#top" class="back-to-top">↑</a>
+</footer>
+
+</body>
+</html>

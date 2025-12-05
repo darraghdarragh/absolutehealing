@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Absolute Healing | Contact</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- ✅ Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style/style.css">
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body id="top">
+
+<!-- ================= HEADER ================= -->
+<header>
+  <nav class="navbar navbar-expand-md bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-uppercase" href="index.html" style="color:#3b5249;">Absolute Healing</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navmenu">
+        <ul class="navbar-nav gap-3">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="therapies.html">Therapies</a></li>
+          <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+          <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ================= MAIN CONTENT ================= -->
+<main class="container my-5">
+  <h1 class="text-center mb-4">Contact Absolute Healing</h1>
+
+  <div class="row g-4 align-items-start">
+    <!-- Contact Form -->
+    <div class="col-md-7">
+      <form id="contactForm" class="p-4 bg-white shadow-sm rounded">
+        <div class="mb-3">
+          <label for="name" class="form-label fw-semibold">Name</label>
+          <input type="text" id="name" class="form-control" placeholder="Your full name" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label fw-semibold">Email</label>
+          <input type="email" id="email" class="form-control" placeholder="example@email.com" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="message" class="form-label fw-semibold">Message</label>
+          <textarea id="message" class="form-control" rows="5" placeholder="Write your message here..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn w-100">Send Message</button>
+      </form>
+    </div>
+
+    <!-- Contact Info -->
+    <aside class="col-md-5">
+      <div class="p-4 bg-light border-start border-3 border-success rounded shadow-sm">
+        <h2 class="h4 mb-3">Clinic Information</h2>
+        <p><strong>Edenderry Clinic:</strong> Cedar Lawns, Offaly, R45 CK73</p>
+        <p><strong>Phone:</strong> +353 87 699 6983</p>
+        <p><strong>Email:</strong> <a href="mailto:absolutecarolkenny@gmail.com">absolutecarolkenny@gmail.com</a></p>
+        <div class="ratio ratio-4x3 mt-3">
+          <iframe 
+            src="https://www.google.com/maps?q=6+Cedar+Lawns+Offaly&output=embed" 
+            loading="lazy"
+            allowfullscreen
+            style="border-radius:8px;">
+          </iframe>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<!-- ================= LOGO BANNER ================= -->
+<section class="logo-banner py-4 mt-5 bg-white shadow-sm">
+  <div class="container d-flex flex-wrap justify-content-center align-items-center gap-4">
+    <img src="images/stpaulsgarda.png" alt="St. Paul's Garda Credit Union" class="partner-logo">
+    <img src="images/vhi_insurance_logo.png" alt="VHI Insurance" class="partner-logo">
+    <img src="images/irish_reflexology_logo.png" alt="Irish Reflexology Institute" class="partner-logo">
+    <img src="images/aviva_insurance_logo.png" alt="Aviva Insurance" class="partner-logo">
+    <img src="images/laya_insurance_logo.png" alt="Laya Healthcare" class="partner-logo">
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <p>© 2025 Absolute Healing — Made with care in Ireland 💚</p>
+  <a href="#top" class="back-to-top">↑</a>
+</footer>
+</body>
+</html>
