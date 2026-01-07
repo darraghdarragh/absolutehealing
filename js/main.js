@@ -83,7 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   buttons.forEach(btn => {
     btn.addEventListener("click", () => {
-      const moreText = btn.previousElementSibling; // the .more div right above
+      // safer than previousElementSibling (handles whitespace/text nodes)
+      const moreText = btn.parentElement.querySelector(".more");
+      if (!moreText) return;
+
       const isExpanded = btn.getAttribute("aria-expanded") === "true";
 
       if (isExpanded) {
@@ -98,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // === Animate cert strip on scroll (NEW, SAFE) ===
+  // === Animate cert strip on scroll ===
   const revealItems = document.querySelectorAll('.reveal-on-scroll');
 
   if (revealItems.length && 'IntersectionObserver' in window) {
@@ -106,14 +109,13 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target); // animate once
+          observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.2 });
 
     revealItems.forEach(el => observer.observe(el));
   } else {
-    // fallback: if no observer support, just show them
     revealItems.forEach(el => el.classList.add('is-visible'));
   }
 });
