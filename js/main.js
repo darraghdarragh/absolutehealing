@@ -27,7 +27,7 @@ let index = 0;
 
 function showSlide(i) {
   slides.forEach(slide => slide.classList.remove('active'));
-  slides[i].classList.add('active');
+  if (slides[i]) slides[i].classList.add('active');
 }
 
 const nextBtn = document.getElementById('next');
@@ -97,4 +97,23 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  // === Animate cert strip on scroll (NEW, SAFE) ===
+  const revealItems = document.querySelectorAll('.reveal-on-scroll');
+
+  if (revealItems.length && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target); // animate once
+        }
+      });
+    }, { threshold: 0.2 });
+
+    revealItems.forEach(el => observer.observe(el));
+  } else {
+    // fallback: if no observer support, just show them
+    revealItems.forEach(el => el.classList.add('is-visible'));
+  }
 });

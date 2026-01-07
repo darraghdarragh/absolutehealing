@@ -18,7 +18,7 @@ body {
   line-height: 1.6;
 }
 
-h1, h2 {
+h1, h2, h3, h4 {
   font-family: 'Playfair Display', serif;
   color: #3b5249;
 }
@@ -45,13 +45,6 @@ header {
   z-index: 1000;
 }
 
-/* Optional transparent overlay for homepage only */
-body.home header {
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(6px);
-  box-shadow: none;
-}
-
 .navbar-nav .nav-link {
   color: #3b5249;
   font-weight: 600;
@@ -72,7 +65,6 @@ body.home header {
   border-bottom: 2px solid #cbb682;
 }
 
-/* Bootstrap navbar toggler (mobile menu) */
 .navbar-toggler {
   border-color: #7daa92;
 }
@@ -81,10 +73,9 @@ body.home header {
 }
 
 /* =====================================================
-   HOMEPAGE SECTIONS
+   HERO (UPDATED: remove grey box, keep buttons)
    ===================================================== */
 
-/* --- Hero Section --- */
 .hero {
   background: url('../images/banner.png') center/cover no-repeat;
   height: 85vh;
@@ -95,44 +86,69 @@ body.home header {
   text-align: center;
 }
 
+/* Darken hero so text stays readable */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom right, rgba(203,182,130,0.35), rgba(125,170,146,0.35));
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.22),
+    rgba(0,0,0,0.55)
+  );
   z-index: 1;
 }
 
 .hero-overlay {
   position: relative;
   z-index: 2;
-  background: rgba(0, 0, 0, 0.45);
-  padding: 1.5rem;
-  border-radius: 12px;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
   color: #fff;
   max-width: 100%;
   animation: fadeIn 1.2s ease both;
-    margin-top: 23rem; /* move box down */
-
+  margin-top: 23rem;
 }
 
 .hero h1 {
   font-size: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.7rem;
   letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 0 10px 26px rgba(0,0,0,0.35);
 }
 
-
-  .hero p {
+.hero p {
   font-family: 'Playfair Display', serif;
   font-size: 1.6rem;
   letter-spacing: 0.5px;
   line-height: 1.5;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.2rem;
+  color: #fff;
+  text-shadow: 0 10px 26px rgba(0,0,0,0.35);
 }
 
-  
+/* Glass pill behind ONLY the buttons */
+.hero-overlay .mt-3 {
+  display: inline-flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
 
+  padding: 14px 18px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.28);
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+}
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
 
 .btn {
   background-color: #cbb682;
@@ -140,13 +156,14 @@ body.home header {
   padding: 0.9rem 1.8rem;
   border-radius: 30px;
   font-weight: 600;
-  margin: 0 0.5rem;
+  margin: 0;
   transition: all 0.3s ease;
 }
 
 .btn:hover {
   background-color: #7daa92;
   transform: scale(1.05);
+  color: #fff;
 }
 
 .btn.secondary {
@@ -160,7 +177,26 @@ body.home header {
   color: #fff;
 }
 
-/* --- Intro / Mission Section --- */
+/* Custom gradient button used on therapies page */
+.btn-custom {
+  background: linear-gradient(90deg, #cbb682, #7daa92);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  padding: 0.55rem 1.3rem;
+  transition: all 0.3s ease;
+}
+.btn-custom:hover {
+  opacity: 0.92;
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+/* =====================================================
+   INTRO
+   ===================================================== */
+
 .intro {
   text-align: center;
   padding: 4rem 2rem;
@@ -169,16 +205,17 @@ body.home header {
   font-size: 1.1rem;
   line-height: 1.7;
   border-bottom: 3px solid #cbb682;
-  animation: fadeIn 0.8s ease both;
 }
 
 .intro h2 {
-  font-family: 'Playfair Display', serif;
   margin-bottom: 1rem;
   color: #7daa92;
 }
 
-/* --- About Section --- */
+/* =====================================================
+   ABOUT
+   ===================================================== */
+
 .about {
   display: flex;
   flex-wrap: wrap;
@@ -210,6 +247,7 @@ blockquote {
   border-radius: 8px;
   color: #3b5249;
 }
+
 blockquote span {
   display: block;
   margin-top: 0.6rem;
@@ -217,7 +255,10 @@ blockquote span {
   color: #7daa92;
 }
 
-/* --- Credentials Section --- */
+/* =====================================================
+   CREDENTIALS
+   ===================================================== */
+
 .credentials {
   display: flex;
   flex-direction: row-reverse;
@@ -238,7 +279,69 @@ blockquote span {
 }
 
 /* =====================================================
-   THERAPIES PAGE
+   CERTIFICATION BADGES
+   ===================================================== */
+
+.cert-strip {
+  position: relative;
+  margin-top: 1.5rem;
+  padding-bottom: 18px;
+}
+
+.cert-strip::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(203,182,130,0),
+    rgba(203,182,130,1),
+    rgba(203,182,130,0)
+  );
+}
+
+.cert-strip__row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: nowrap;
+}
+
+.cert-strip__row img {
+  max-height: 200px;
+  width: auto;
+
+  background: rgba(255,255,255,0.97);
+  padding: 18px 0px;
+  border-radius: 20px;
+  border: 1px solid rgba(125,170,146,0.22);
+
+  box-shadow:
+    0 12px 30px rgba(59, 82, 73, 0.12),
+    0 8px 22px rgba(125, 170, 146, 0.18);
+
+  transition: transform 0.35s ease,
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+
+  image-rendering: -webkit-optimize-contrast;
+  transform: translateZ(0);
+}
+
+.cert-strip__row img:hover {
+  transform: translateY(-8px);
+  border-color: rgba(125,170,146,0.36);
+  box-shadow:
+    0 22px 44px rgba(59, 82, 73, 0.16),
+    0 14px 30px rgba(125, 170, 146, 0.24);
+}
+
+/* =====================================================
+   THERAPIES PAGE (THIS IS WHAT YOU WERE MISSING)
    ===================================================== */
 
 .therapies-filter {
@@ -256,9 +359,10 @@ blockquote span {
   justify-content: center;
 }
 
+/* Filter chips */
 .chip {
   display: inline-block;
-  padding: 0.5rem 0.9rem;
+  padding: 0.55rem 0.95rem;
   border-radius: 999px;
   background: #ffffff;
   border: 1px solid #e7e1d2;
@@ -272,7 +376,7 @@ blockquote span {
   border-color: #7daa92;
 }
 
-/* --- Therapy Card Layout  --- */
+/* Therapy card layout */
 .therapy {
   background: #fff;
   border-radius: 12px;
@@ -296,7 +400,7 @@ blockquote span {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Read More Smooth Toggle */
+/* Read-more content MUST start hidden */
 .more {
   display: none;
   margin-top: 0.5rem;
@@ -304,26 +408,14 @@ blockquote span {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
+
+/* When JS sets display:block it fades in */
 .more[style*="block"] {
   opacity: 1;
 }
 
-.btn-custom {
-  background: linear-gradient(90deg, #c9b27d, #7daa92);
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  font-weight: 600;
-  padding: 0.5rem 1.3rem;
-  transition: all 0.3s ease;
-}
-.btn-custom:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-}
-
 /* =====================================================
-   TESTIMONIALS SECTION
+   TESTIMONIALS (if used elsewhere)
    ===================================================== */
 
 .testimonials {
@@ -350,41 +442,8 @@ blockquote span {
   margin-bottom: 1.5rem;
 }
 
-.testimonials .btn-prev,
-.testimonials .btn-next {
-  border-radius: 50px;
-  font-weight: 600;
-  padding: 0.5rem 1.4rem;
-  transition: all 0.3s ease;
-}
-
-/* Gradient buttons for consistency */
-.testimonials .btn-prev {
-  background: transparent;
-  color: #7daa92;
-  border: 2px solid #cbb682;
-}
-
-.testimonials .btn-prev:hover {
-  background: linear-gradient(90deg, #cbb682, #7daa92);
-  color: #fff;
-}
-
-.testimonials .btn-next {
-  background: linear-gradient(90deg, #cbb682, #7daa92);
-  color: #fff;
-  border: none;
-}
-
-.testimonials .btn-next:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-}
-
-
-
 /* =====================================================
-   CTA SECTION 
+   CTA
    ===================================================== */
 
 .cta {
@@ -397,7 +456,6 @@ blockquote span {
 }
 
 .cta h2 {
-  font-family: 'Playfair Display', serif;
   font-weight: 700;
   color: #fff;
   font-size: 2rem;
@@ -427,7 +485,7 @@ blockquote span {
 }
 
 /* =====================================================
-   FOOTER / ANIMATION / RESPONSIVE
+   FOOTER + BACK TO TOP
    ===================================================== */
 
 footer {
@@ -437,8 +495,44 @@ footer {
   padding: 1.2rem;
   margin-top: 3rem;
   font-size: 0.95rem;
-  letter-spacing: 0.4px;
 }
+
+/* Back to top button (works with your JS) */
+.back-to-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #cbb682;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.25s ease;
+  z-index: 9999;
+}
+
+.back-to-top:hover {
+  background: #7daa92;
+  color: #fff;
+  transform: translateY(0);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* =====================================================
+   ANIMATIONS
+   ===================================================== */
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
@@ -446,27 +540,9 @@ footer {
 }
 
 /* =====================================================
-   RESPONSIVE
+   LOGO BANNER
    ===================================================== */
 
-@media (max-width: 900px) {
-  nav ul { flex-direction: column; gap: 0.8rem; }
-  .about, .credentials, .contact-container {
-    flex-direction: column;
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .therapy, .therapy.alt {
-    padding: 1.5rem;
-    text-align: center;
-  }
-  .therapy img, .about-img img, .credentials img {
-    width: 85%;
-    margin-top: 1rem;
-  }
-}
-
-/* ================= LOGO BANNER ================= */
 .logo-banner {
   border-top: 3px solid #3b5249;
   border-bottom: 3px solid #3b5249;
@@ -483,5 +559,59 @@ footer {
 .partner-logo:hover {
   filter: grayscale(0%);
   transform: scale(1.05);
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+  .hero-overlay { margin-top: 18rem; }
+
+  .hero h1 { font-size: 2.4rem; }
+  .hero p  { font-size: 1.25rem; }
+
+  .hero-overlay .mt-3 {
+    padding: 12px 14px;
+    border-radius: 20px;
+  }
+
+  .about, .credentials {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .therapy { padding: 1.5rem; text-align: center; }
+
+  .therapy img {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .cert-strip__row {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cert-strip__row img {
+    max-height: 90px;
+    padding: 14px 18px;
+  }
+}
+/* Workshops dates table polish */
+table thead th {
+  color: #3b5249;
+  border-bottom: 2px solid rgba(203,182,130,0.55) !important;
+}
+
+table tbody tr {
+  border-bottom: 1px solid rgba(59,82,73,0.10);
+}
+
+table tbody td {
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
 }
 
