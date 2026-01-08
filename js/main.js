@@ -1,7 +1,14 @@
+// ============================
+// Absolute Healing - main.js
+// ============================
+
 // === Smooth Scroll for Anchor Links ===
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
-    const target = document.querySelector(this.getAttribute('href'));
+    const href = this.getAttribute('href');
+    if (!href) return;
+
+    const target = document.querySelector(href);
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth' });
@@ -51,40 +58,72 @@ if (nextBtn && prevBtn && slides.length > 0) {
   }, 6000);
 }
 
-// === Form Validation for Contact & Workshop Forms ===
-function validateForm(formId) {
-  const form = document.getElementById(formId);
+// === Form Validation for Contact & Workshop Forms (Formspree-safe) ===
+function setupFormValidation(options) {
+  const form = document.getElementById(options.formId);
   if (!form) return;
 
-  form.addEventListener('submit', e => {
-    const name = form.querySelector('#name')?.value.trim();
-    const email = form.querySelector('#email')?.value.trim();
-    const message = form.querySelector('#message')?.value.trim();
-    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  const nameInput = document.getElementById(options.nameId);
+  const emailInput = document.getElementById(options.emailId);
+  const messageInput = document.getElementById(options.messageId);
 
+  // More reliable email check than the old {2,3} TLD limit
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  form.addEventListener("submit", (e) => {
+    const name = (nameInput?.value || "").trim();
+    const email = (emailInput?.value || "").trim();
+    const message = (messageInput?.value || "").trim();
+
+    // Validate
     if (!name || !email || !message) {
+      e.preventDefault();
       alert("⚠️ Please fill out all fields before submitting.");
+      return;
+    }
+
+    if (!emailPattern.test(email)) {
       e.preventDefault();
-    } else if (!email.match(emailPattern)) {
       alert("⚠️ Please enter a valid email address.");
-      e.preventDefault();
-    } else {
-      alert("✅ Thank you, your message has been sent!");
+      emailInput?.focus();
+      return;
+    }
+
+    // ✅ Valid: allow the normal POST to Formspree
+    // Optional UX: show a sending state (doesn't block submit)
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.dataset.originalText = submitBtn.textContent || "Submit";
+      submitBtn.textContent = "Sending...";
     }
   });
 }
 
-validateForm('contactForm');
-validateForm('workshopForm');
+// Contact form IDs (contact.html)
+setupFormValidation({
+  formId: "contactForm",
+  nameId: "contact-name",
+  emailId: "contact-email",
+  messageId: "contact-message",
+});
 
-// === READ MORE BUTTON FUNCTIONALITY ===
+// Workshop form IDs (workshops.html)
+setupFormValidation({
+  formId: "workshopForm",
+  nameId: "workshop-name",
+  emailId: "workshop-email",
+  messageId: "workshop-message",
+});
+
+// === READ MORE BUTTON FUNCTIONALITY + Reveal on Scroll ===
 document.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll(".read-more");
 
   buttons.forEach(btn => {
     btn.addEventListener("click", () => {
       // safer than previousElementSibling (handles whitespace/text nodes)
-      const moreText = btn.parentElement.querySelector(".more");
+      const moreText = btn.parentElement?.querySelector(".more");
       if (!moreText) return;
 
       const isExpanded = btn.getAttribute("aria-expanded") === "true";

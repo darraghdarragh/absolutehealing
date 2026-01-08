@@ -1,3 +1,6 @@
+<!-- =========================
+     workshops.html (FULL UPDATED)
+     ========================= -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -157,21 +160,54 @@
       <div class="workshop-form p-4 bg-white rounded shadow-sm">
         <h2 class="text-center mb-3">Join a Workshop</h2>
 
-        <form id="workshopForm">
+        <form
+          id="workshopForm"
+          action="https://formspree.io/f/mjgknpea"
+          method="POST"
+        >
           <div class="mb-3">
-            <label for="name" class="form-label fw-semibold">Name</label>
-            <input type="text" id="name" class="form-control" placeholder="Your full name" required>
+            <label for="workshop-name" class="form-label fw-semibold">Name</label>
+            <input
+              type="text"
+              id="workshop-name"
+              name="name"
+              class="form-control"
+              placeholder="Your full name"
+              required
+            >
           </div>
 
           <div class="mb-3">
-            <label for="email" class="form-label fw-semibold">Email</label>
-            <input type="email" id="email" class="form-control" placeholder="example@email.com" required>
+            <label for="workshop-email" class="form-label fw-semibold">Email</label>
+            <input
+              type="email"
+              id="workshop-email"
+              name="email"
+              class="form-control"
+              placeholder="example@email.com"
+              required
+            >
           </div>
 
           <div class="mb-3">
-            <label for="message" class="form-label fw-semibold">Which workshop are you interested in?</label>
-            <textarea id="message" class="form-control" rows="4" required></textarea>
+            <label for="workshop-message" class="form-label fw-semibold">Which workshop are you interested in?</label>
+            <textarea
+              id="workshop-message"
+              name="message"
+              class="form-control"
+              rows="4"
+              required
+            ></textarea>
           </div>
+
+          <!-- Optional: email subject -->
+          <input type="hidden" name="_subject" value="Workshop Registration Interest - Absolute Healing">
+
+          <!-- Optional: include page source -->
+          <input type="hidden" name="source" value="workshops.html">
+
+          <!-- Optional: spam honeypot -->
+          <input type="text" name="_gotcha" style="display:none">
 
           <button type="submit" class="btn w-100">Submit</button>
         </form>
